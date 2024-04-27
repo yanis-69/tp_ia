@@ -11,4 +11,5 @@ COPY . /app
 RUN pip install matplotlib
 
 # Commande pour exécuter l'application
-CMD ["python", "main.py"]
+CMD ["ls", "-la", "/app"]
+#CMD ["python", "main.py"]
