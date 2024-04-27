@@ -1,15 +1,14 @@
-# Utiliser une image de base Python officielle.
-FROM python:3.10
+FROM python:3.10-slim
 
-# Définir le répertoire de travail dans le conteneur
-WORKDIR /app
+# set the working directory
+WORKDIR /code
 
-# Copier les fichiers de l'application dans le conteneur
-COPY . /app
+# install dependencies
+COPY ./requirements.txt ./
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-# Installer les dépendances nécessaires
-RUN pip install matplotlib
-RUN pip install networkx
-# Commande pour exécuter l'application
-#CMD ["ls", "-la", "/app"]
-CMD ["python", "main.py"]
+# copy the src to the folder
+COPY ./app ./app
+
+# start the server
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
