@@ -12,4 +12,4 @@ RUN pip install matplotlib
 RUN pip install networkx
 # Commande pour exécuter l'application
 #CMD ["ls", "-la", "/app"]
-CMD ["python", "app/main.py"]
+CMD ["python", "main.py"]
