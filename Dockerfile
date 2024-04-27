@@ -5,7 +5,7 @@ FROM python:3.10
 WORKDIR /app
 
 # Copier les fichiers de l'application dans le conteneur
-COPY . .
+COPY . /app
 
 # Installer les dépendances nécessaires
 RUN pip install matplotlib
