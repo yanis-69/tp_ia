@@ -1,9 +1,14 @@
 # Utiliser une image de base officielle Python
-FROM python:3.10-slim
+FROM python:3.10
 
 # Définir le répertoire de travail dans le conteneur
 WORKDIR /app
-
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    make \
+    libffi-dev \
+    libssl-dev
 # Copier les fichiers de dépendances et installer les dépendances
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
