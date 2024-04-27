@@ -2,7 +2,7 @@
 FROM python:3.10
 
 # Définir le répertoire de travail dans le conteneur
-WORKDIR /app
+WORKDIR Practical 4/app
 RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
