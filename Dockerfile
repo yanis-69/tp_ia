@@ -1,23 +1,14 @@
-# Utiliser une image de base officielle Python
+# Utiliser une image de base Python officielle.
 FROM python:3.10
 
 # Définir le répertoire de travail dans le conteneur
 WORKDIR /app
-RUN apt-get update && apt-get install -y \
-    gcc \
-    g++ \
-    make \
-    libffi-dev \
-    libssl-dev
-# Copier les fichiers de dépendances et installer les dépendances
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
-# Copier le reste des fichiers de l'application dans le conteneur
-COPY . .
+# Copier les fichiers de l'application dans le conteneur
+COPY . /app
 
-# Exposer le port sur lequel l'application sera accessible
-EXPOSE 8000
+# Installer les dépendances nécessaires
+RUN pip install matplotlib
 
-# Définir la commande par défaut pour exécuter l'application
+# Commande pour exécuter l'application
 CMD ["python", "main.py"]
